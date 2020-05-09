@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <title>Hot Restaurant - Tables</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="jumbotron text-center">
+            <h1 class="h1 text-center" style="font-size: 75px;">
+              Hot Restaurant
+            </h1>
+            <hr class="my-4" />
+            <h2 class="h2 text-center">
+              Current Reservations and Waiting List
+            </h2>
+            <br />
+            <a class="btn btn-danger btn-lg" href="reserve.html" role="button"
+              >Make a Resurvation</a
+            >
+            <a class="btn btn-primary btn-lg" href="home.html" role="button"
+              >Home</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <ul class="list-group" id="resList">
+            <li class="list-group-item list-group-item-dark">
+              Current Resurvations
+            </li>
+            <li class="list-group-item"></li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-12">
+          <ul class="list-group" id="waitingList">
+            <li class="list-group-item list-group-item-dark">Waiting List</li>
+            <li class="list-group-item"></li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-12">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-dark">Control Panel</li>
+            <li class="list-group-item">
+              <a
+                class="btn btn-danger float-left"
+                style="margin-right: 10px;"
+                href="/api/clear"
+                role="button"
+                >Clear Tables</a
+              >
+              <a
+                class="btn btn-primary float-left"
+                style="margin-right: 10px;"
+                href="/api/tables"
+                role="button"
+                >API Table Link</a
+              >
+              <a
+                class="btn btn-primary float-left"
+                style="margin-right: 10px;"
+                href="/api/waitlist"
+                role="button"
+                >API Wait List</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
