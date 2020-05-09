@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group">
                   <label for="reserve-phone">Phone Number</label>
-                  <input type="text" class="form-control" id="reserve-name" />
+                  <input type="text" class="form-control" id="reserve-phone" />
                 </div>
                 <div class="form-group">
                   <label for="reserve-email">Email Address</label>
@@ -61,7 +61,11 @@
                     id="reserve-unique-id"
                   />
                 </div>
-                <button type="submit" class="btn btn-primary submit">
+                <button
+                  type="submit"
+                  id="btnSubmit"
+                  class="btn btn-primary submit"
+                >
                   Submit
                 </button>
               </form>
@@ -96,7 +100,7 @@
     </div>
 
     <script type="text/javascript">
-      $(".submit").on("click", function (event) {
+      $("#btnSubmit").on("click", function (event) {
         event.preventDefault();
         var newReserve = {
           name: $("#reserve-name").val().trim(),
