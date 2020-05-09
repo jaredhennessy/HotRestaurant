@@ -39,7 +39,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <ul class="list-group" id="resList">
+          <ol class="list-group" id="resList">
             <li class="list-group-item list-group-item-dark">
               Current Reservations
             </li>
@@ -50,7 +50,7 @@
       <br />
       <div class="row">
         <div class="col-12">
-          <ul class="list-group" id="waitingList">
+          <ol class="list-group" id="waitingList">
             <li class="list-group-item list-group-item-dark">Waiting List</li>
             <li class="list-group-item"></li>
           </ul>
@@ -95,9 +95,10 @@
       $.get("/api/tables/", function (data) {
         console.log(data);
         if (data) {
-          var resList;
-          for (let reservation in tables) {
-            resList += `<li>Name: ${reservation.name}`;
+          // var resList;
+          for (let reservation in data) {
+            $("#resList").append(`<li>${data[reservation].id} | Name: ${data[reservation].name}`);
+            // resList += `<li>Name: ${reservation.name}`;
           }
           //   $("#stats").show();
           //   $("#name").text(data.name);
@@ -110,7 +111,18 @@
           // );
           // $("#stats").hide();
         }
+      }).then(function() {
+      $.get("/api/waitlist/", function (data) {
+        console.log(data);
+        if (data) {
+          // var resList;
+          for (let reservation in data) {
+            $("#waitingList").append(`<li>${data[reservation].id} | Name: ${data[reservation].name}`);
+            // resList += `<li>Name: ${reservation.name}`;
+          }
+        }
       });
     });
+  });
   </script>
 </html>
