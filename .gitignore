@@ -1,7 +1,8 @@
 node_modules/
 phases.md
-
+HotRestaurant.zip
 .DS_Store
+
 # Logs
 logs
 *.log
