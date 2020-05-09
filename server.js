@@ -24,20 +24,7 @@ var tables = [
 ];
 var waitlist = [];
 
-// Page routes
-app.get("/reserve", function (req, res) {
-  res.sendFile(path.join(__dirname, "./public/reserve.html"));
-});
-
-app.get("/tables", function (req, res) {
-  res.sendFile(path.join(__dirname, "./public/tables.html"));
-});
-
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./public/home.html"));
-});
-
-// API routes
+// API GET routes
 app.get("/api/tables", function (req, res) {
   return res.json(tables);
 });
@@ -51,7 +38,7 @@ app.get("/api/clear", function (req, res) {
   waitlist = [];
 });
 
-// Data routes
+// API POST route
 app.post("/api/reserve", function (req, res) {
   var newReserve = req.body;
 
@@ -72,4 +59,17 @@ app.post("/api/reserve", function (req, res) {
 
     res.json(newReserve);
   }
+});
+
+// Page routes
+app.get("/reserve", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/reserve.html"));
+});
+
+app.get("/tables", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/tables.html"));
+});
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/home.html"));
 });
