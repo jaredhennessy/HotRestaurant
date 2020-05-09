@@ -36,6 +36,7 @@ app.get("/api/waitlist", function (req, res) {
 app.get("/api/clear", function (req, res) {
   tables = [];
   waitlist = [];
+  return;
 });
 
 // API POST route

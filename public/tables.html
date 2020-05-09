@@ -39,21 +39,21 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <ol class="list-group" id="resList">
-            <li class="list-group-item list-group-item-dark">
+          <div class="card" id="resList">
+            <div class="card-header">
               Current Reservations
-            </li>
-            <li class="list-group-item"></li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
       <br />
       <div class="row">
         <div class="col-12">
-          <ol class="list-group" id="waitingList">
-            <li class="list-group-item list-group-item-dark">Waiting List</li>
-            <li class="list-group-item"></li>
-          </ul>
+          <div class="card" id="resList">
+            <div class="card-header">
+              Waitlist
+            </div>
+          </div>
         </div>
       </div>
       <br />
@@ -63,9 +63,10 @@
             <li class="list-group-item list-group-item-dark">Control Panel</li>
             <li class="list-group-item">
               <a
+                id="btnClear"
                 class="btn btn-danger float-left"
                 style="margin-right: 10px;"
-                href="/api/clear"
+                href=""
                 role="button"
                 >Clear Tables</a
               >
@@ -94,35 +95,37 @@
     $(document).ready(function () {
       $.get("/api/tables/", function (data) {
         console.log(data);
-        if (data) {
+        if (data.length > 0) {
           // var resList;
           for (let reservation in data) {
-            $("#resList").append(`<li>${data[reservation].id} | Name: ${data[reservation].name}`);
+            $("#resList").append(
+              `<div class="card-title" style="margin: 10px;">${data[reservation].id} | ${data[reservation].name}</div>`
+            );
             // resList += `<li>Name: ${reservation.name}`;
           }
-          //   $("#stats").show();
-          //   $("#name").text(data.name);
-          //   $("#role").text(data.role);
-          //   $("#age").text(data.age);
-          //   $("#force-points").text(data.forcePoints);
-          // } else {
-          // $("#name").text(
-          //   "Reservations available."
-          // );
-          // $("#stats").hide();
+        } else {
+          $("#resList").append(
+            `<div class="card-title" style="margin: 10px;">Five reservations available.</div>`
+          );
         }
-      }).then(function() {
-      $.get("/api/waitlist/", function (data) {
-        console.log(data);
-        if (data) {
-          // var resList;
-          for (let reservation in data) {
-            $("#waitingList").append(`<li>${data[reservation].id} | Name: ${data[reservation].name}`);
-            // resList += `<li>Name: ${reservation.name}`;
+      }).then(function () {
+        $.get("/api/waitlist/", function (data) {
+          console.log(data);
+          if (data) {
+            // var resList;
+            for (let reservation in data) {
+              $("#waitingList").append(
+                `<div class="card-title" style="margin: 10px;">${data[reservation].id} | ${data[reservation].name}</div>`
+              );
+            }
           }
-        }
+        });
       });
     });
-  });
+
+    $("#btnClear").on("click", function (event) {
+      event.preventDefault();
+      location.reload();
+    });
   </script>
 </html>
