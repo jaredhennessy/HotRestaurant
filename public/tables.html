@@ -89,4 +89,28 @@
       </div>
     </div>
   </body>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $.get("/api/tables/", function (data) {
+        console.log(data);
+        if (data) {
+          var resList;
+          for (let reservation in tables) {
+            resList += `<li>Name: ${reservation.name}`;
+          }
+          //   $("#stats").show();
+          //   $("#name").text(data.name);
+          //   $("#role").text(data.role);
+          //   $("#age").text(data.age);
+          //   $("#force-points").text(data.forcePoints);
+          // } else {
+          // $("#name").text(
+          //   "Reservations available."
+          // );
+          // $("#stats").hide();
+        }
+      });
+    });
+  </script>
 </html>
